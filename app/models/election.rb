@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 class Election < ApplicationRecord
+  include Auditable
+
+  audit_after_create
+  audit_after_update
+  audit_after_destroy
+
   has_many :questions
   belongs_to :user
 

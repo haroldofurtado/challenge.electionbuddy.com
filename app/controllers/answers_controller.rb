@@ -27,6 +27,7 @@ class AnswersController < ApplicationController
   # POST /answers.json
   def create
     @answer = Answer.new(answer_params.merge(question: @question))
+    @answer.responsible_user = current_user
 
     respond_to do |format|
       if @answer.save
@@ -64,11 +65,18 @@ class AnswersController < ApplicationController
     end
   end
 
+  def audits
+    @answer = Answer.find(params[:answer_id])
+    @audits = @answer.audits.order(created_at: :desc)
+    render action: :audits
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_answer
     @answer = Answer.find(params[:id])
+    @answer.responsible_user = current_user
   end
 
   def set_question

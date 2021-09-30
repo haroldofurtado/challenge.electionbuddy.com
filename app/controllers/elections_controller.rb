@@ -26,7 +26,7 @@ class ElectionsController < ApplicationController
   # POST /elections.json
   def create
     @election = Election.new(election_params.merge(user: current_user))
-
+    @election.responsible_user = current_user
     respond_to do |format|
       if @election.save
         format.html { redirect_to @election, notice: 'Election was successfully created.' }
@@ -62,11 +62,18 @@ class ElectionsController < ApplicationController
     end
   end
 
+  def audits
+    @election = Election.find(params[:election_id])
+    @audits = @election.audits.order(created_at: :desc)
+    render action: :audits
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_election
     @election = Election.find(params[:id])
+    @election.responsible_user = current_user
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

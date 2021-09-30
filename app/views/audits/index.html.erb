@@ -1,0 +1,89 @@
+<h1>Elections Audit</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Type of Action</th>
+      <th>Log</th>
+      <th>Responsible User</th>
+      <th>At</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @elections.each do |election| %>
+    <tr>
+      <td><%= election.action %></td>
+      <td><%= election.content %></td>
+      <td><%= election.responsible_user %></td>
+      <td><%= election.created_at %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<h1>Voters Audit</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Type of Action</th>
+      <th>Log</th>
+      <th>Responsible User</th>
+      <th>At</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @voters.each do |election| %>
+    <tr>
+      <td><%= election.action %></td>
+      <td><%= election.content %></td>
+      <td><%= election.responsible_user %></td>
+      <td><%= election.created_at %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<h1>Questions Audit</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Type of Action</th>
+      <th>Log</th>
+      <th>Responsible User</th>
+      <th>At</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @questions.each do |election| %>
+    <tr>
+      <td><%= election.action %></td>
+      <td><%= election.content %></td>
+      <td><%= election.responsible_user %></td>
+      <td><%= election.created_at %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<h1>Answers Audit</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Type of Action</th>
+      <th>Log</th>
+      <th>Responsible User</th>
+      <th>At</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @answers.each do |election| %>
+    <tr>
+      <td><%= election.action %></td>
+      <td><%= election.content %></td>
+      <td><%= election.responsible_user %></td>
+      <td><%= election.created_at %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'Back', root_path %>
